@@ -1,21 +1,21 @@
-name: Build and push image to ECR
+name: Build and Push to ECR
 
-on: push
-  
+on:
+  push:
+    branches:
+      - main # 
 
 jobs:
-  
   build:
-    
-    name: Build Image
     runs-on: ubuntu-latest
 
-   
     steps:
-
-    - name: Check out code
+    - name: Checkout Repository
       uses: actions/checkout@v2
-      
+
+    - name: Set up Docker
+      uses: docker/setup-docker@v2
+
     
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
